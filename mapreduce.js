@@ -3,13 +3,19 @@
  */
 
 var developers = [
-    { name: "Joe", age: 23 },
-    { name: "Sue", age: 28 },
-    { name: "Jon", age: 32 },
+    { name: "Joe", age: 23 },//0
+    { name: "Sue", age: 28 },//23
+    { name: "Jon", age: 32 },//23+28
     { name: "Bob", age: 24 }
 ], age = 0;
 
 // Compute the average age of developers using the mapreduce programming model
+
+age = developers.reduce(function(total, developer){
+  return total + developer.age;
+}, 0);
+
+console.log('Average age :', age/developers.length);
 
 var doctors = [
     { actor: "William Hartnell",     begin: 1963, end: 1966 },
@@ -30,3 +36,22 @@ var doctors = [
 // { doctorNumber: "#9",  playedBy: "Christopher Eccleston", yearsPlayed: 1 }
 // Only keep the doctors from 2000 to today and order them by alphabetic order.
 // Finally, compute the average number of year for the remaining doctors.
+
+doctors = doctors.filter(function(doctor){
+  return doctor.begin > 2000;
+}).map(function(doctor, index){
+
+  return {
+    doctorNumber: "#" + (index+1),
+    playedBy : doctor.actor,
+    yearsPlayed : doctor.end - doctor.begin +1
+  }
+}).sort(function(a, b){
+  return a - b;
+});
+
+var totalYear = doctors.reduce(function(total, doctor){
+  return total + doctor.yearsPlayed;
+}, 0);
+
+console.log("Average", totalYear/doctors.length, doctors);
