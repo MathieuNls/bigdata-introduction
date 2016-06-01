@@ -21,4 +21,4 @@ It contains:
 ```
 
 - A map reduce application
-- An HBase application that saves tweet and index them.
+- An HBase application that saves tweets and indexes them.
