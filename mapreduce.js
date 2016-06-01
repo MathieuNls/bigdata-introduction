@@ -28,4 +28,5 @@ var doctors = [
 
 // Transform the doctors to look like
 // { doctorNumber: "#9",  playedBy: "Christopher Eccleston", yearsPlayed: 1 }
-// Only keep the doctors from 2000 to today
+// Only keep the doctors from 2000 to today and order them by alphabetic order.
+// Finally, compute the average number of year for the remaining doctors.
